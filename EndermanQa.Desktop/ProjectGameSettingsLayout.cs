@@ -36,26 +36,20 @@ internal static class ProjectGameSettingsLayout
             throw new InvalidOperationException("Project/game form controls do not match the v1 contract; no controls were detached.");
 
         stack.Children.Clear();
-        var layout = new Grid { RowDefinitions = { new RowDefinition { Height = GridLength.Auto }, new RowDefinition { Height = GridLength.Auto }, new RowDefinition { Height = new GridLength(1, GridUnitType.Star) } } };
-        var header = new StackPanel();
+        var layout = new Grid { RowDefinitions = { new RowDefinition { Height = GridLength.Auto }, new RowDefinition { Height = new GridLength(1, GridUnitType.Star) } } };
         var projectLabel = (TextBlock)parts[0];
-        projectLabel.Margin = new Thickness(0, 0, 0, 3);
-        window.StageProjectName.Margin = new Thickness(0, 0, 0, 3);
+        projectLabel.Visibility = Visibility.Collapsed;
+        window.StageProjectName.Visibility = Visibility.Collapsed;
         projectButton.HorizontalAlignment = HorizontalAlignment.Left;
-        projectButton.Margin = new Thickness(0, 8, 0, 0);
-        header.Children.Add(projectLabel);
-        header.Children.Add(window.StageProjectName);
-        header.Children.Add(projectButton);
-        layout.Children.Add(header);
 
-        separator.Margin = new Thickness(0, 14, 0, 14);
-        Grid.SetRow(separator, 1);
+        separator.Margin = new Thickness(0, 0, 0, 14);
+        Grid.SetRow(separator, 0);
         layout.Children.Add(separator);
 
         var body = new Grid();
         body.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star), MinWidth = 320 });
         body.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star), MinWidth = 300 });
-        Grid.SetRow(body, 2);
+        Grid.SetRow(body, 1);
         layout.Children.Add(body);
 
         var targetPanel = new StackPanel();
@@ -91,7 +85,27 @@ internal static class ProjectGameSettingsLayout
         Grid.SetColumn(nextCard, 1);
         body.Children.Add(nextCard);
 
-        card.Child = layout;
+        var disclosureHeader = new StackPanel { Margin = new Thickness(2, 1, 2, 1) };
+        disclosureHeader.Children.Add(SectionHeading("프로젝트와 게임 설정"));
+        var disclosureHint = new TextBlock
+        {
+            Text = "QA 대상, 게임 버전과 다음 단계를 필요할 때 펼쳐서 조정하세요.",
+            FontSize = 11,
+            Margin = new Thickness(0, 3, 0, 0),
+            TextWrapping = TextWrapping.Wrap
+        };
+        disclosureHint.SetResourceReference(TextBlock.ForegroundProperty, "Theme.TextSecondary");
+        disclosureHeader.Children.Add(disclosureHint);
+
+        var expander = new Expander
+        {
+            Header = disclosureHeader,
+            Content = layout,
+            IsExpanded = false,
+            HorizontalContentAlignment = HorizontalAlignment.Stretch,
+            Margin = new Thickness(0)
+        };
+        card.Child = expander;
     }
 
     private static TextBlock SectionHeading(string text)
