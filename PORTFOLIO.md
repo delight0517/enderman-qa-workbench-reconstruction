@@ -41,9 +41,9 @@ This is intentional QA reporting: missing coverage is recorded as missing or inc
 
 - [Sanitized 100-case status and coverage CSV](portfolio/Enderman-100-Case-Results.csv)
 - [Reconstructed Workbench source](https://github.com/delight0517/enderman-qa-workbench-reconstruction)
-- [Windows x64 recovery preview 2](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases/tag/v0.1.0-preview.2)
+- [Windows x64 recovery preview 3](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases/tag/v0.1.0-preview.3)
 
-The preview is an experimental source-recovery build. It has not passed human visual review, a complete client gameplay run, complete suite execution or Jira submission. Preview 2 predates the latest source-only UI change on `main`; do not infer the new UI is present in that binary.
+The preview is an experimental source-recovery build. Its package constructor smoke check and isolated-source UI render passed, but it has not passed full interactive startup review, a complete client gameplay run, complete suite execution or Jira submission.
 
 ## Career portfolio framing
 

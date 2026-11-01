@@ -3,6 +3,7 @@
 Owner: Codex `/root`
 Project: Enderman QA Workbench ILSpy reconstruction, Windows WPF candidate
 Base commit: `aeee0695695a01489e4069c204207df126193c20`
+Source commit: `5f433b9b119d916cc4295ef167834847c68432e6`
 
 ## Change
 
@@ -17,4 +18,4 @@ Base commit: `aeee0695695a01489e4069c204207df126193c20`
 
 ## Release boundary
 
-This source checkpoint has not been packaged as a Windows download, installed over the user's app, or verified against the installed app's data. The public `v0.1.0-preview.2` release remains an earlier build and does not include this change. The 100-case game QA remains incomplete.
+Preview 3 package: `EndermanQaWorkbench-Reconstructed-0.3.184-preview.3-win-x64.zip`, SHA-256 `217BEEE51930BD4754E9735F1B0D354E1A70CFCB1B8ECF4036230CF40CA817D4`. The packaged and extracted executable reached `main-window-constructed-only` with isolated data; the extracted process exited 0. Its diagnostic stages were `diagnostics-ready → create-application → construct-main-window → main-window-constructed-only`; `Run` and window display were not invoked. ZIP SHA-256: `217BEEE51930BD4754E9735F1B0D354E1A70CFCB1B8ECF4036230CF40CA817D4`. This is not an installed-app update or full interactive startup review. The 100-case game QA remains incomplete.
