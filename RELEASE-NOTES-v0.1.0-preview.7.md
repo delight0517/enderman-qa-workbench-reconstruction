@@ -6,7 +6,7 @@ This is a recovery preview built from an ILSpy reconstruction of the installed E
 - Simplified the Project QA home by removing a duplicate next-step panel.
 - Renamed the collapsed settings disclosure to “게임 대상 및 버전”; retained the game target selector and version memo inside it. Project switching/introduction editing remains on Project Home.
 - Product Release build completed with 0 warnings and 0 errors.
-- Candidate reached `main-window-content-rendered` on a task-owned private Win32 desktop using a fresh isolated candidate data root. The process did not close after `WM_CLOSE`; after confirming its exact executable path and PID, the task-owned candidate process was force-stopped. Do not interpret this as graceful shutdown verification.
+- Candidate reached `main-window-content-rendered` on a task-owned private Win32 desktop using a fresh isolated candidate data root. In a follow-up run, the exact candidate process exited with code 0 after `WM_CLOSE` was posted to all 17 top-level windows it owned. An earlier single-window probe timed out; the verified shutdown route enumerates all candidate-owned windows.
 - A hidden synthetic fixture render at 1280×900 was visually reviewed. It used sanitized sample data and did not capture the installed app or real QA files.
 
 ## Verification limits
