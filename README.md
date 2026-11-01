@@ -2,6 +2,8 @@
 
 > **Recovery preview. This is not the original source release and is not an official build.** The original project source could not be recovered. These C# files were reconstructed from the installed Enderman QA Workbench 0.3.184 binary using ILSpy. Matching behavior and source equivalence have not been established. This repository and preview installer are published to make recovery work reviewable; do not use them for production QA or Jira submissions.
 
+See the [Enderman 100-case QA portfolio](PORTFOLIO.md) for the project brief and an evidence-led, privacy-reviewed case summary. The public summary excludes raw journals, local paths, account details and client screenshots; the dataset remains explicitly incomplete.
+
 ## Windows preview
 
 Download [preview 2 for Windows x64](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases/download/v0.1.0-preview.2/EndermanQaWorkbench-Reconstructed-0.3.184-preview.2-win-x64.zip) or review the [release notes](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases/tag/v0.1.0-preview.2). SHA-256:
