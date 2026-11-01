@@ -1,0 +1,3 @@
+namespace EndermanQa.Desktop.Adapters;
+
+public sealed record FabricClientActionReceipt(string RequestId, string Action, bool AcceptedByClient, FabricClientEntityObservation Before, FabricClientEntityObservation AfterClientTick, string ServerOutcome, string VanillaInteractionResult, string ObservedAt, FabricCachedTargetObservation? CachedTargetBeforeServerMove = null, bool? TargetPositionChangedSinceCache = null, string? MainHandItem = null, bool? PlayerUsingItemBefore = null, int? PlayerUsingItemTicksBefore = null, bool? PlayerUsingItemAfter = null, int? PlayerUsingItemTicksAfter = null, float? PlayerYawBefore = null, float? PlayerPitchBefore = null, float? PlayerYawAfter = null, float? PlayerPitchAfter = null, bool? NormalArrowAmmoAvailable = null);

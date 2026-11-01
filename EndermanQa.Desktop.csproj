@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>preview</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>EndermanQa.Reconstructed</AssemblyName>
+    <RootNamespace>EndermanQa.Desktop</RootNamespace>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <Version>0.3.184-preview.1</Version>
+    <ApplicationTitle>Enderman QA Workbench Reconstructed Preview</ApplicationTitle>
+    <ApplicationTitle>Enderman QA Workbench Reconstructed Preview</ApplicationTitle>
+    <AssemblyVersion>0.3.184.0</AssemblyVersion>
+    <FileVersion>0.3.184.0</FileVersion>
+    <InformationalVersion>0.3.184-reconstruction.1</InformationalVersion>
+    <DefaultItemExcludes>$(DefaultItemExcludes);artifacts\**</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EndermanQa.Desktop.g.resources" />
+    <Compile Remove="instances-path-check/**/*.cs" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3179.45" />
+  </ItemGroup>
+</Project>
+
