@@ -4,9 +4,15 @@
 
 ## Windows preview
 
-Download the latest `win-x64` preview from [GitHub Releases](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases). It is a self-contained .NET 10 Windows x64 build. The Microsoft Edge WebView2 Runtime must already be installed for embedded web features; see [Microsoft's installer](https://developer.microsoft.com/microsoft-edge/webview2/). The current source compiles from a clean clone. A Windows preview ZIP is being prepared; no validated runnable binary is published yet.
+Download [preview 2 for Windows x64](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases/download/v0.1.0-preview.2/EndermanQaWorkbench-Reconstructed-0.3.184-preview.2-win-x64.zip) or review the [release notes](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases/tag/v0.1.0-preview.2). SHA-256:
 
-The preview deliberately writes to `%LOCALAPPDATA%\EndermanQaWorkbench-Candidate-v27`, separate from the installed Workbench and its user data. Do not copy the preview's data into the installed application. The preview is unsigned and may trigger Windows SmartScreen.
+```text
+875723C657A3AB50132B3A9928F9E6A4D1E66AD2BF51FB860BFD71DDA401C47D
+```
+
+It is a self-contained .NET 10 Windows x64 build. The Microsoft Edge WebView2 Evergreen Runtime must already be installed for embedded web features; get it from [Microsoft](https://developer.microsoft.com/microsoft-edge/webview2/). The preview is unsigned and may trigger Windows SmartScreen. Verify the hash before extracting.
+
+The preview writes to `%LOCALAPPDATA%\EndermanQaWorkbench-Candidate-v27`, separate from the installed Workbench and its user data. Do not copy preview data into the installed application. Startup diagnostics are written under that preview data root. The published package reached WPF content-rendered startup and a clean close in an isolated run; it has not received a human visual review or game-play qualification.
 
 ## Build from source
 
@@ -23,9 +29,9 @@ The self-contained package includes .NET 10 and Windows Desktop Runtime. It does
 ## Known limitations
 
 - Reconstruction introduces compiler warnings and may contain behavior differences from the installed app.
-- The preview has not passed human UI review or a complete isolated game-play QA run.
+- No human visual review, complete isolated Minecraft gameplay run, complete 100-case QA execution, or Jira workflow has been verified.
 - The original source, build pipeline, signing identity, and official release provenance remain unresolved.
-- This repository does not include the Enderman 100-case QA dataset or evidence; those remain separate user work products.
+- The Enderman 100-case QA dataset and evidence are separate user work products and are not included in this repository or release.
 
 ## Licensing and provenance
 
