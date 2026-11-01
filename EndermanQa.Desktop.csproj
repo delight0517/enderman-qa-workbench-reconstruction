@@ -8,12 +8,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>preview</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <AssemblyName>EndermanQa.Reconstructed</AssemblyName>
+    <AssemblyName>EndermanQa.Desktop</AssemblyName>
     <RootNamespace>EndermanQa.Desktop</RootNamespace>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <Version>0.3.184-preview.1</Version>
-    <ApplicationTitle>Enderman QA Workbench Reconstructed Preview</ApplicationTitle>
-    <ApplicationTitle>Enderman QA Workbench Reconstructed Preview</ApplicationTitle>
+    <Product>Enderman QA Workbench Reconstructed Preview</Product>
+    <Product>Enderman QA Workbench Reconstructed Preview</Product>
     <AssemblyVersion>0.3.184.0</AssemblyVersion>
     <FileVersion>0.3.184.0</FileVersion>
     <InformationalVersion>0.3.184-reconstruction.1</InformationalVersion>
@@ -26,4 +26,3 @@
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3179.45" />
   </ItemGroup>
 </Project>
-
