@@ -47,7 +47,10 @@ public class OnlyChatEmbeddedView : UserControl, IComponentConnector
 		{
 			StatusText.Text = "설치된 Only Chat 로컬 서버 확인 중…";
 			Uri endpoint = await _runtime.ConnectAsync();
-			string text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EndermanQaWorkbench", "webview2", "only-chat");
+			string? configuredProfile = Environment.GetEnvironmentVariable("ENDERMAN_QA_WEBVIEW2_USER_DATA_ROOT");
+			string text = string.IsNullOrWhiteSpace(configuredProfile)
+				? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EndermanQaWorkbench", "webview2", "only-chat")
+				: Path.GetFullPath(configuredProfile);
 			Directory.CreateDirectory(text);
 			CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, text);
 			await Browser.EnsureCoreWebView2Async(environment);
