@@ -36,6 +36,25 @@ internal static class MainStageNavigation
             stage.Tag = StageIds[stageIndex++];
         }
 
+        var labels = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["project-game"] = "프로젝트 개요",
+            ["game-macros"] = "게임 · 매크로",
+            ["ai-work"] = "AI 작업",
+            ["project-files"] = "프로젝트 파일",
+            ["jira-submit"] = "Jira 제출",
+            ["tool-design"] = "도구 제작",
+            ["only-chat"] = "Only Chat",
+            ["tools"] = "도구"
+        };
+        foreach (var stage in mainStages.Items.OfType<TabItem>())
+        {
+            if (stage.Tag is string id && labels.TryGetValue(id, out var label))
+            {
+                stage.Header = label;
+                stage.ToolTip = label;
+            }
+        }
         DependencyObject? current = suiteResultsContent;
         while (current is not null && current is not TabItem)
         {

@@ -31,7 +31,12 @@ namespace EndermanQa.Desktop.XamlLoader
                         var baml2006ReaderType = typeof(XamlReader).Assembly
                             .GetType("System.Windows.Baml2006.Baml2006Reader");
                         
-                        var baml2006Reader = Activator.CreateInstance(baml2006ReaderType, ms);
+                        var readerSettings = new System.Xaml.XamlReaderSettings
+                        {
+                            BaseUri = new Uri("pack://application:,,,/"),
+                            LocalAssembly = asm
+                        };
+                        var baml2006Reader = Activator.CreateInstance(baml2006ReaderType, ms, readerSettings);
                         
                         var schemaCtx = baml2006ReaderType.GetProperty("SchemaContext").GetValue(baml2006Reader);
                         var settings = new System.Xaml.XamlObjectWriterSettings { RootObjectInstance = root };
