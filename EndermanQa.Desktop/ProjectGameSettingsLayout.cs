@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -31,65 +30,42 @@ internal static class ProjectGameSettingsLayout
             || !ReferenceEquals(parts[5], gamePicker)
             || parts[6] is not TextBlock versionLabel || !versionLabel.Text.StartsWith("버전 또는 실행 환경 메모", StringComparison.Ordinal)
             || !ReferenceEquals(parts[7], versionMemo)
-            || parts[8] is not Border nextGuidance
+            || parts[8] is not Border
             || parts[9] is not Button nextButton || !Equals(nextButton.Content?.ToString(), "다음: AI 작업 설명"))
             throw new InvalidOperationException("Project/game form controls do not match the v1 contract; no controls were detached.");
 
         stack.Children.Clear();
-        var layout = new Grid { RowDefinitions = { new RowDefinition { Height = GridLength.Auto }, new RowDefinition { Height = new GridLength(1, GridUnitType.Star) } } };
+        var layout = new StackPanel();
         var projectLabel = (TextBlock)parts[0];
         projectLabel.Visibility = Visibility.Collapsed;
         window.StageProjectName.Visibility = Visibility.Collapsed;
-        projectButton.HorizontalAlignment = HorizontalAlignment.Left;
-
-        separator.Margin = new Thickness(0, 0, 0, 14);
-        Grid.SetRow(separator, 0);
+        separator.Margin = new Thickness(0, 0, 0, 12);
         layout.Children.Add(separator);
 
-        var body = new Grid();
-        body.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star), MinWidth = 320 });
-        body.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star), MinWidth = 300 });
-        Grid.SetRow(body, 1);
-        layout.Children.Add(body);
-
         var targetPanel = new StackPanel();
-        targetPanel.Children.Add(SectionHeading("게임 설정"));
         var targetLabel = (TextBlock)parts[4];
-        targetLabel.Margin = new Thickness(0, 14, 0, 5);
+        targetLabel.Margin = new Thickness(0, 0, 0, 5);
         gamePicker.Width = double.NaN;
         gamePicker.MinWidth = 250;
         gamePicker.HorizontalAlignment = HorizontalAlignment.Stretch;
         SharedControlPresentation.ApplyComboBox(gamePicker);
         targetPanel.Children.Add(targetLabel);
         targetPanel.Children.Add(gamePicker);
-        versionLabel.Margin = new Thickness(0, 14, 0, 5);
+        versionLabel.Margin = new Thickness(0, 12, 0, 5);
         versionMemo.Width = double.NaN;
         versionMemo.MinWidth = 250;
         versionMemo.HorizontalAlignment = HorizontalAlignment.Stretch;
         SharedControlPresentation.ApplyTextBox(versionMemo);
         targetPanel.Children.Add(versionLabel);
         targetPanel.Children.Add(versionMemo);
-        var targetCard = Card(targetPanel, new Thickness(16), new Thickness(0, 0, 8, 0));
-        body.Children.Add(targetCard);
-
-        var nextPanel = new StackPanel();
-        nextPanel.Children.Add(SectionHeading("다음 단계"));
-        nextGuidance.Margin = new Thickness(0, 14, 0, 0);
-        nextPanel.Children.Add(nextGuidance);
-        nextButton.HorizontalAlignment = HorizontalAlignment.Left;
-        nextButton.Margin = new Thickness(0, 14, 0, 0);
-        SharedControlPresentation.ApplyButton(projectButton, primary: false);
-        SharedControlPresentation.ApplyButton(nextButton, primary: true);
-        nextPanel.Children.Add(nextButton);
-        var nextCard = Card(nextPanel, new Thickness(16), new Thickness(8, 0, 0, 0));
-        Grid.SetColumn(nextCard, 1);
-        body.Children.Add(nextCard);
+        var targetCard = Card(targetPanel, new Thickness(16), new Thickness(0));
+        layout.Children.Add(targetCard);
 
         var disclosureHeader = new StackPanel { Margin = new Thickness(2, 1, 2, 1) };
-        disclosureHeader.Children.Add(SectionHeading("프로젝트와 게임 설정"));
+        disclosureHeader.Children.Add(SectionHeading("게임 대상 및 버전"));
         var disclosureHint = new TextBlock
         {
-            Text = "QA 대상, 게임 버전과 다음 단계를 필요할 때 펼쳐서 조정하세요.",
+            Text = "QA 대상 게임과 실행 버전을 여기에서 조정하세요. 프로젝트 전환과 소개 수정은 프로젝트 홈에서 할 수 있습니다.",
             FontSize = 11,
             Margin = new Thickness(0, 3, 0, 0),
             TextWrapping = TextWrapping.Wrap
