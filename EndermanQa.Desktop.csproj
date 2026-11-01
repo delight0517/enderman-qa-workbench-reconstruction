@@ -20,7 +20,7 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);artifacts\**</DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EndermanQa.Desktop.g.resources" />
+    <EmbeddedResource Include="EndermanQa.Desktop.g.resources" LogicalName="EndermanQa.Desktop.g.resources" />
     <Compile Remove="instances-path-check/**/*.cs" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3179.45" />
