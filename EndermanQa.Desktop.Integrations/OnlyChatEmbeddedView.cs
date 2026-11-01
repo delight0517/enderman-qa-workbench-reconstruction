@@ -26,6 +26,8 @@ public class OnlyChatEmbeddedView : UserControl, IComponentConnector
 
 	private bool _contentLoaded;
 
+	private static bool BlockExternalNavigationForQa => string.Equals(Environment.GetEnvironmentVariable("ENDERMAN_QA_BLOCK_EXTERNAL_NAVIGATION"), "1", StringComparison.Ordinal);
+
 	public OnlyChatEmbeddedView()
 	{
 		InitializeComponent();
@@ -70,7 +72,10 @@ public class OnlyChatEmbeddedView : UserControl, IComponentConnector
 		catch (Exception ex)
 		{
 			StatusText.Text = "Only Chat 연결 실패 · " + ex.Message;
-			MessageBox.Show(Window.GetWindow(this), ex.Message, "Only Chat 연결", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+			if (!BlockExternalNavigationForQa)
+			{
+				MessageBox.Show(Window.GetWindow(this), ex.Message, "Only Chat 연결", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+			}
 		}
 		finally
 		{
@@ -104,6 +109,11 @@ public class OnlyChatEmbeddedView : UserControl, IComponentConnector
 			if (result.Scheme == Uri.UriSchemeHttps && string.IsNullOrEmpty(result.UserInfo))
 			{
 				e.Cancel = true;
+				if (BlockExternalNavigationForQa)
+				{
+					StatusText.Text = "격리 QA 중에는 외부 로그인/링크 열기를 차단했습니다.";
+					return;
+				}
 				try
 				{
 					Process.Start(new ProcessStartInfo(result.AbsoluteUri)
@@ -126,6 +136,11 @@ public class OnlyChatEmbeddedView : UserControl, IComponentConnector
 	private void OnNewWindowRequested(object? sender, CoreWebView2NewWindowRequestedEventArgs e)
 	{
 		e.Handled = true;
+		if (BlockExternalNavigationForQa)
+		{
+			StatusText.Text = "격리 QA 중에는 새 외부 창을 차단했습니다.";
+			return;
+		}
 		if (Uri.TryCreate(e.Uri, UriKind.Absolute, out Uri result) && result.Scheme == Uri.UriSchemeHttps && string.IsNullOrEmpty(result.UserInfo))
 		{
 			try
