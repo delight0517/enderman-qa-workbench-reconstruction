@@ -4,7 +4,7 @@
 
 ## Windows preview
 
-Download the latest `win-x64` preview from [GitHub Releases](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases). It is a self-contained .NET 10 Windows x64 build. The Microsoft Edge WebView2 Runtime must already be installed for embedded web features; see [Microsoft's installer](https://developer.microsoft.com/microsoft-edge/webview2/). Extract the ZIP and run `EndermanQa.Reconstructed.exe`.
+Download the latest `win-x64` preview from [GitHub Releases](https://github.com/delight0517/enderman-qa-workbench-reconstruction/releases). It is a self-contained .NET 10 Windows x64 build. The Microsoft Edge WebView2 Runtime must already be installed for embedded web features; see [Microsoft's installer](https://developer.microsoft.com/microsoft-edge/webview2/). The current source compiles from a clean clone. A Windows preview ZIP is being prepared; no validated runnable binary is published yet.
 
 The preview deliberately writes to `%LOCALAPPDATA%\EndermanQaWorkbench-Candidate-v27`, separate from the installed Workbench and its user data. Do not copy the preview's data into the installed application. The preview is unsigned and may trigger Windows SmartScreen.
 
